@@ -1,7 +1,15 @@
 @import '../variables';
 
 .categories {
+  .hamburger {
+    @media screen and (min-width: 1300px) {
+      display: none;
+    }
+  }
   ul {
+    @media screen and (max-width: 1300px) {
+      display: none;
+    }
     display: flex;
 
     li {

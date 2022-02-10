@@ -1,10 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import HamburgerMenu from './HamburgerMenu';
 
 const Categories = React.memo(function Categories({ activeCategory, items, onClickCategory }) {
   return (
     <div>
       <div className="categories">
+        <div className="hamburger">
+          <HamburgerMenu>
+            {items.map((name, index) => (
+              <p
+                className={activeCategory === index ? 'active-selecte-humburger' : ''}
+                onClick={() => onClickCategory(index)}
+                key={`${name}_${index}`}>
+                {name}
+              </p>
+            ))}
+          </HamburgerMenu>
+        </div>
         <ul>
           <li className={activeCategory == null ? 'active' : ''} onClick={() => onClickCategory()}>
             Все
