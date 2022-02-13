@@ -5,7 +5,7 @@ import { Categories, SortPopup, PizzaBlock, PizzaLoadingBlock } from '../compone
 import { setCategory, setSortBy } from '../redux/actions/filters';
 import { fetchPizzas } from '../redux/actions/pizzas';
 
-const categoryNames = ['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
+const categoryNames = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
 const sortItems = [
   { name: 'популярности', type: 'popular', order: 'desc' },
   { name: 'цене', type: 'price', order: 'desc' },
@@ -21,21 +21,15 @@ function Home() {
 
   React.useEffect(() => {
     dispatch(fetchPizzas(sortBy, category));
-  }, [dispatch, category, sortBy]);
+  }, [category, sortBy]);
 
-  const onSelectCategory = React.useCallback(
-    (index) => {
-      dispatch(setCategory(index));
-    },
-    [dispatch],
-  );
+  const onSelectCategory = React.useCallback((index) => {
+    dispatch(setCategory(index));
+  }, []);
 
-  const onSelectSortType = React.useCallback(
-    (type) => {
-      dispatch(setSortBy(type));
-    },
-    [dispatch],
-  );
+  const onSelectSortType = React.useCallback((type) => {
+    dispatch(setSortBy(type));
+  }, []);
 
   const handleAddPizzaToCart = (obj) => {
     dispatch({

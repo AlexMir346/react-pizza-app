@@ -13,7 +13,7 @@ export const fetchPizzas = (sortBy, category) => (dispatch) => {
 
   axios
     .get(
-      `/pizzas?${category != null ? `category=${category}` : ''}&_sort=${sortBy.type}&_order=${
+      `/pizzas?${category > 0 && `category=${category - 1}`}&_sort=${sortBy.type}&_order=${
         sortBy.order
       }`,
     )
